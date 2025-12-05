@@ -1,0 +1,29 @@
+<!-- templates/add_post.html -->
+{% extends "base.html" %}
+
+{% block title %}Add Post - TechBlog{% endblock %}
+
+{% block content %}
+    <h1>Create a New Post</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Post Title</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="mb-3">
+            <label for="topic" class="form-label">Select Topic</label>
+            <select class="form-select" id="topic" name="topic" required>
+                <option value="">Choose a topic...</option>
+                {% for topic in topics %}
+                    <option value="{{ topic }}">{{ topic }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Post Content</label>
+            <textarea class="form-control" id="content" name="content" rows="10" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Publish Post</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Dashboard</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!-- templates/add_topic.html -->
+{% extends "base.html" %}
+
+{% block title %}Add Topic - TechBlog{% endblock %}
+
+{% block content %}
+    <h1>Add a New Topic</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="topic" class="form-label">Topic Name</label>
+            <input type="text" class="form-control" id="topic" name="topic" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Topic</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Dashboard</a>
+    </form>
+
+    {% if topics %}
+        <h3 class="mt-4">Current Topics</h3>
+        <ul class="list-group">
+            {% for topic in topics %}
+                <li class="list-group-item">{{ topic }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

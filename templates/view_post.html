@@ -1,0 +1,17 @@
+<!-- templates/view_post.html -->
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - TechBlog{% endblock %}
+
+{% block content %}
+    <article>
+        <h1>{{ post.title }}</h1>
+        <p class="text-muted">{{ post.topic }} • {{ post.timestamp }}</p>
+        <div class="post-content mt-4">
+            {{ post.content | replace('\n', '<br>') | safe }}
+        </div>
+    </article>
+    <div class="mt-4">
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Dashboard</a>
+    </div>
+{% endblock %}
